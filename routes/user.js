@@ -20,10 +20,20 @@ function getDirectories (srcpath) {
 }
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json( 
-    getDirectories(screens_path)
-  );
+router.get('/:name', function(req, res, next) {
+    var data = {};
+    fs.readdir(screens_path+req.url, (err, files) => {
+        console.log(err)
+        files.forEach((file, index) => {
+            if(file){
+                data[index] = file;
+            }
+        });
+        res.json( 
+            data
+        );
+    })
+   
 });
 
 module.exports = router;
