@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "  basePath=/Users/benoitdelamaire/dev/portscrolio_api screensPath=/Users/benoitdelamaire/dev/screens nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",

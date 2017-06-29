@@ -4,8 +4,8 @@ const fs = require('fs')
 const path = require('path')
 
 
-var base_path = process.cwd()
-var screens_path = base_path+'/../screens/'
+var base_path = process.env.basePath
+var screens_path = process.env.screensPath
 
 function getDirectories (srcpath) {
   return fs.readdirSync(srcpath)
