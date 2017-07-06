@@ -22,7 +22,7 @@ function getDirectories (srcpath) {
 /* GET users listing. */
 router.get('/:name', function(req, res, next) {
     var data = {};
-    fs.readdir(screens_path+req.url, (err, files) => {
+    fs.readdir(screens_path+'/'+req.params.name, (err, files) => {
         console.log(err)
         files.forEach((file, index) => {
             if(file){
@@ -34,6 +34,15 @@ router.get('/:name', function(req, res, next) {
         );
     })
    
+});
+
+/* GET users listing. */
+router.get('/:name/:screen', function(req, res, next) {
+    console.log(req.params)
+    data = `${screens_path}/${req.params.name}/${req.params.screen}`
+    res.json( 
+        data
+    );
 });
 
 module.exports = router;
