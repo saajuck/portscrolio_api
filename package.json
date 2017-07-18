@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "PORT=3030 node ./bin/www",
-    "dev": "PORT=3030 basePath=/Users/benoitdelamaire/dev/portscrolio_api screensPath=/Users/benoitdelamaire/dev/screens nodemon ./bin/www"
+    "dev": "PORT=3030 basePath=./ screensPath=../screens nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
