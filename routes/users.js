@@ -23,9 +23,14 @@ function getDirectories (srcpath) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.json( 
-    getDirectories(screens_path)
-  );
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  setTimeout((function() {
+    res.json( 
+      getDirectories(screens_path)
+    );
+  }), 2000);
+  
 });
 
 module.exports = router;
