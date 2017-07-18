@@ -1,8 +1,6 @@
 var express = require('express');
+var env = require('../env');
 var router = express.Router();
-
-var base_path = process.cwd()
-console.log(base_path);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

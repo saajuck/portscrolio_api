@@ -2,12 +2,11 @@ var express = require('express');
 var router = express.Router();
 const fs = require('fs')
 const path = require('path')
+const env = require('../env')
+const paths = require('../paths')
 
-console.log('env :')
-console.log(process.env.basePath)
-
-var base_path = process.env.basePath
-var screens_path = process.env.screensPath
+console.log(`env : ${env}`)
+const { screensPath } = paths
 
 function getDirectories (srcpath) {
   return fs.readdirSync(srcpath)
@@ -26,11 +25,11 @@ router.get('/', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   setTimeout((function() {
-    res.json( 
-      getDirectories(screens_path)
+    res.json(
+      getDirectories(screensPath)
     );
   }), 2000);
-  
+
 });
 
 module.exports = router;

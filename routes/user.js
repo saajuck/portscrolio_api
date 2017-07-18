@@ -2,10 +2,9 @@ var express = require('express');
 var router = express.Router();
 const fs = require('fs')
 const path = require('path')
+const paths = require('../paths')
 
-
-var base_path = process.env.basePath
-var screens_path = process.env.screensPath
+const { screensPath } = paths
 
 function getDirectories (srcpath) {
   return fs.readdirSync(srcpath)
@@ -22,7 +21,7 @@ function getDirectories (srcpath) {
 /* GET users listing. */
 router.get('/:name', function(req, res, next) {
     var data = {};
-    fs.readdir(screens_path+'/'+decodeURI(req.params.name), (err, files) => {
+    fs.readdir(`${screensPath}/${decodeURI(req.params.name)}`, (err, files) => {
         console.log(err)
         if(!err){
             files.forEach((file, index) => {
@@ -33,19 +32,19 @@ router.get('/:name', function(req, res, next) {
         }else{
             data.error = "not found"
         }
-      
-        res.json( 
+
+        res.json(
             data
         );
     })
-   
+
 });
 
 /* GET users listing. */
 router.get('/:name/:screen', function(req, res, next) {
     console.log(req.params)
-    data = `${screens_path}/${req.params.name}/${req.params.screen}`
-    res.json( 
+    data = `${screensPath}/${req.params.name}/${req.params.screen}`
+    res.json(
         data
     );
 });
