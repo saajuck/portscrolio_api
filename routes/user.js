@@ -22,13 +22,18 @@ function getDirectories (srcpath) {
 /* GET users listing. */
 router.get('/:name', function(req, res, next) {
     var data = {};
-    fs.readdir(screens_path+'/'+req.params.name, (err, files) => {
+    fs.readdir(screens_path+'/'+decodeURI(req.params.name), (err, files) => {
         console.log(err)
-        files.forEach((file, index) => {
-            if(file){
-                data[index] = file;
-            }
-        });
+        if(!err){
+            files.forEach((file, index) => {
+                if(file){
+                    data[index] = file;
+                }
+            });
+        }else{
+            data.error = "not found"
+        }
+      
         res.json( 
             data
         );
